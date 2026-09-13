@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Anti-translate for YouTube",
+  "version": "1.0",
+  "description": "Keeps YouTube titles (and channel names) in their original language.",
+  "permissions": ["storage"],
+  "action": {
+    "default_title": "Anti-translate for YouTube",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "96": "icon96.png"
+    }
+  },
+  "icons": {
+    "96": "icon96.png"
+  },
+  "host_permissions": ["*://*.youtube.com/*", "*://www.youtube.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko_android": {
+      "strict_min_version": "142.0"
+    },
+    "gecko": {
+      "id": "no-title-translate@example",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  }
+}
